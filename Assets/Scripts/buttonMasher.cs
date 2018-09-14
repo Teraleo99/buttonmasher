@@ -7,18 +7,30 @@ public class buttonMasher : MonoBehaviour {
     // Data for our class
     public AudioSource clickSound; // Sound that wll play when we click the button
     public TextMesh scoreText; // Display text for the player's score
+    public TextMesh timerText; // Display text for the timer remaining
+    public float gameLength; // How many seconds will the game last 
 
     private int score = 0; // The numerical data value of our score
+    private float timeRemaining = 0; // Numerical time remaining
 
 	// Use this for initialization
 	void Start () {
         Debug.Log("Start method called");
-	}// End of Start()
+
+        timeRemaining = gameLength;
+
+    }// End of Start()
 
     // Update is called once per frame
     void Update()
     {
         Debug.Log("Update method called");
+
+        timeRemaining = timeRemaining - Time.deltaTime;
+
+        // Update the visual time remaining 
+
+        timerText.text = (Mathf.CeilToInt(timeRemaining)).ToString();
 
     }// End of Update()
 
